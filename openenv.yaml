@@ -1,8 +1,12 @@
-name: email_env
-version: 1.0
-description: Email triage environment
-
 tasks:
-  - name: easy
-  - name: medium
-  - name: hard
+  - id: easy
+    path: easy.py
+    grader: grader_easy.py
+
+  - id: medium
+    path: medium.py
+    grader: grader_medium.py
+
+  - id: hard
+    path: hard.py
+    grader: grader_hard.py
