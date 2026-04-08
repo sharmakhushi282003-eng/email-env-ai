@@ -1,12 +1,24 @@
 tasks:
   - id: easy
-    path: tasks/easy.py
-    grader: graders/grader_easy.py
+    description: Reply politely to a client email
+    grader:
+      type: simple
+      expected_action: reply
+      reward_correct: 0.8
+      reward_incorrect: 0.3
 
   - id: medium
-    path: tasks/medium.py
-    grader: graders/grader_medium.py
+    description: Ignore spam email
+    grader:
+      type: simple
+      expected_action: ignore
+      reward_correct: 0.7
+      reward_incorrect: 0.2
 
   - id: hard
-    path: tasks/hard.py
-    grader: graders/grader_hard.py
+    description: Respond to urgent email quickly
+    grader:
+      type: simple
+      expected_action: reply
+      reward_correct: 0.9
+      reward_incorrect: 0.4
