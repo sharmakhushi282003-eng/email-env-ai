@@ -1,4 +1,2 @@
-def grade_hard(action):
-    if action == "reply":
-        return 1.0
-    return 0.0
+def grade(action):
+    return 0.9 if action == "reply" else 0.4
