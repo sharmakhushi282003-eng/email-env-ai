@@ -12,7 +12,7 @@ def run():
         )
         action = "reply"
     except Exception:
-        action = "reply"
+        action = "reply"          # ← yahi chhota change tha
     print("[START] task=email_task", flush=True)
     print(f"[STEP] step=1 action={action} reward=0.5 done=true", flush=True)
     print("[END] success=true steps=1 score=0.5 rewards=0.5", flush=True)
