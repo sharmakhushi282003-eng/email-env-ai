@@ -4,14 +4,23 @@ tasks:
   - id: easy
     input: "Reply politely to a client email"
     grader:
-      name: grader_easy
+      type: string_match
+      expected: "reply"
+      reward: 0.8
+      penalty: 0.3
 
   - id: medium
     input: "Ignore spam email"
     grader:
-      name: grader_medium
+      type: string_match
+      expected: "ignore"
+      reward: 0.7
+      penalty: 0.2
 
   - id: hard
     input: "Respond to urgent email"
     grader:
-      name: grader_hard
+      type: string_match
+      expected: "reply"
+      reward: 0.9
+      penalty: 0.4
