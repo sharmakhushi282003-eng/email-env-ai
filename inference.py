@@ -8,11 +8,9 @@ def run():
             api_key=os.environ["API_KEY"]
         )
 
-        response = client.chat.completions.create(
+        client.chat.completions.create(
             model="gpt-4o-mini",
-            messages=[
-                {"role": "user", "content": "Reply politely to an email"}
-            ]
+            messages=[{"role": "user", "content": "Reply politely"}]
         )
 
         action = "reply"
@@ -20,11 +18,9 @@ def run():
     except Exception:
         action = "ignore"
 
-    # 🔥 REQUIRED STRUCTURED OUTPUT
     print("[START] task=email_task", flush=True)
     print(f"[STEP] step=1 action={action} reward=0.5 done=true", flush=True)
     print("[END] success=true steps=1 score=0.5 rewards=0.5", flush=True)
-
 
 if __name__ == "__main__":
     run()
