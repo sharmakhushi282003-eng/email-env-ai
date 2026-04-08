@@ -20,32 +20,33 @@ done = False
 step = 0
 rewards = []
 
-while not done and step < 3:
-    step += 1
+try:
+    while not done and step < 3:
+        step += 1
 
-    # 🔥 LLM CALL (IMPORTANT)
-    response = client.chat.completions.create(
-        model=MODEL_NAME,
-        messages=[
-            {"role": "system", "content": "You are an email assistant."},
-            {"role": "user", "content": obs["message"]}
-        ],
-        max_tokens=50
-    )
+        response = client.chat.completions.create(
+            model=MODEL_NAME,
+            messages=[
+                {"role": "system", "content": "You are an email assistant."},
+                {"role": "user", "content": obs["message"]}
+            ],
+            max_tokens=50
+        )
 
-    action_text = response.choices[0].message.content.strip()
+        action_text = response.choices[0].message.content.strip()
+        action = "reply" if "reply" in action_text.lower() else "ignore"
 
-    # simple action mapping
-    action = "reply" if "reply" in action_text.lower() else "ignore"
+        result = env.step({"action": action})
 
-    result = env.step({"action": action})
+        reward = result["reward"]
+        done = result["done"]
 
-    reward = result["reward"]
-    done = result["done"]
+        rewards.append(reward)
 
-    rewards.append(reward)
+        print(f"[STEP] step={step} action={action} reward={reward:.2f} done={str(done).lower()} error=null")
 
-    print(f"[STEP] step={step} action={action} reward={reward:.2f} done={str(done).lower()} error=null")
+except Exception as e:
+    print(f"[ERROR] {str(e)}")
 
 score = sum(rewards)
 success = score > 0
