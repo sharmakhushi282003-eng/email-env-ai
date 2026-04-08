@@ -2,25 +2,13 @@ version: 1
 
 tasks:
   - id: easy
-    input: "Reply politely to a client email"
-    grader:
-      type: string_match
-      expected: "reply"
-      reward: 0.8
-      penalty: 0.3
+    path: tasks/easy.py
+    grader: graders/easy_grader.py
 
   - id: medium
-    input: "Ignore spam email"
-    grader:
-      type: string_match
-      expected: "ignore"
-      reward: 0.7
-      penalty: 0.2
+    path: tasks/medium.py
+    grader: graders/medium_grader.py
 
   - id: hard
-    input: "Respond to urgent email"
-    grader:
-      type: string_match
-      expected: "reply"
-      reward: 0.9
-      penalty: 0.4
+    path: tasks/hard.py
+    grader: graders/hard_grader.py
