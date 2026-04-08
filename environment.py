@@ -1,21 +1,17 @@
-from models import EmailObservation, EmailAction
-from grader_easy import grade_easy
+def step(self, action_dict):
+    action = action_dict.get("action", "ignore")
 
-class EmailEnv:
+    # simple internal tasks mapping
+    if self.current_task == 1:
+        reward = 0.8 if action == "reply" else 0.3
+    elif self.current_task == 2:
+        reward = 0.7 if action == "ignore" else 0.2
+    else:
+        reward = 0.9 if action == "reply" else 0.4
 
-    def __init__(self):
-        self.state = "new_email"
+    done = True
 
-    def reset(self):
-        self.state = "new_email"
-        return EmailObservation(message="New email received")
-
-    def step(self, action: EmailAction):
-        reward = grade_easy(action.action)
-        done = True
-
-        obs = EmailObservation(message="Action taken")
-        return obs, reward, done, {}
-
-    def state(self):
-        return self.state
+    return {
+        "reward": reward,
+        "done": done
+    }
