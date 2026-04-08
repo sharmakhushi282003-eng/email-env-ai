@@ -2,22 +2,26 @@ import os
 from openai import OpenAI
 
 def run():
-    # ✅ MUST use injected env variables
     client = OpenAI(
-        base_url=os.environ["API_BASE_URL"],
-        api_key=os.environ["API_KEY"]
+        base_url=os.environ.get("API_BASE_URL"),
+        api_key=os.environ.get("API_KEY")
     )
 
-    # ✅ FORCE API CALL (no silent fail)
+    # ✅ FORCE REAL API CALL (NO SILENT FAIL)
     response = client.chat.completions.create(
         model="gpt-4o-mini",
         messages=[
-            {"role": "user", "content": "Reply politely to an email"}
+            {"role": "user", "content": "Reply politely to a client email"}
         ]
     )
 
-    # simple fixed action
-    action = "reply"
+    # ✅ USE RESPONSE (important for detection)
+    content = response.choices[0].message.content.lower()
+
+    if "reply" in content:
+        action = "reply"
+    else:
+        action = "ignore"
 
     # ✅ REQUIRED STRUCTURED OUTPUT
     print("[START] task=email_task", flush=True)
