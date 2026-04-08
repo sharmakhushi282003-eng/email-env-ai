@@ -4,6 +4,10 @@ from environment import EmailEnv
 app = FastAPI()
 env = EmailEnv()
 
+@app.get("/")
+def home():
+    return {"status": "running"}
+
 @app.post("/reset")
 def reset():
     return env.reset()
