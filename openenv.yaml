@@ -1,12 +1,12 @@
 tasks:
   - id: easy
-    path: easy.py
-    grader: grader_easy.py
+    path: tasks/easy.py
+    grader: graders/grader_easy.py
 
   - id: medium
-    path: medium.py
-    grader: grader_medium.py
+    path: tasks/medium.py
+    grader: graders/grader_medium.py
 
   - id: hard
-    path: hard.py
-    grader: grader_hard.py
+    path: tasks/hard.py
+    grader: graders/grader_hard.py
