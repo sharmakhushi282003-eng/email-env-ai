@@ -1,26 +1,17 @@
 version: 1
 
 tasks:
-  - name: easy
-    description: Reply politely to a client email
+  - id: easy
+    input: "Reply politely to a client email"
     grader:
-      type: exact_match
-      expected: reply
-      reward: 0.8
-      penalty: 0.3
+      name: grader_easy
 
-  - name: medium
-    description: Ignore spam email
+  - id: medium
+    input: "Ignore spam email"
     grader:
-      type: exact_match
-      expected: ignore
-      reward: 0.7
-      penalty: 0.2
+      name: grader_medium
 
-  - name: hard
-    description: Respond to urgent email quickly
+  - id: hard
+    input: "Respond to urgent email"
     grader:
-      type: exact_match
-      expected: reply
-      reward: 0.9
-      penalty: 0.4
+      name: grader_hard
