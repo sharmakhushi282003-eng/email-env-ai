@@ -1,4 +1,2 @@
-def grade_easy(action):
-    if action == "reply":
-        return 1.0
-    return 0.0
+def grade(action):
+    return 0.8 if action == "reply" else 0.3
