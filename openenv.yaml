@@ -1,24 +1,26 @@
+version: 1
+
 tasks:
-  - id: easy
+  - name: easy
     description: Reply politely to a client email
     grader:
-      type: simple
-      expected_action: reply
-      reward_correct: 0.8
-      reward_incorrect: 0.3
+      type: exact_match
+      expected: reply
+      reward: 0.8
+      penalty: 0.3
 
-  - id: medium
+  - name: medium
     description: Ignore spam email
     grader:
-      type: simple
-      expected_action: ignore
-      reward_correct: 0.7
-      reward_incorrect: 0.2
+      type: exact_match
+      expected: ignore
+      reward: 0.7
+      penalty: 0.2
 
-  - id: hard
+  - name: hard
     description: Respond to urgent email quickly
     grader:
-      type: simple
-      expected_action: reply
-      reward_correct: 0.9
-      reward_incorrect: 0.4
+      type: exact_match
+      expected: reply
+      reward: 0.9
+      penalty: 0.4
