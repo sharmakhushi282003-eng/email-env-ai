@@ -1,2 +1,5 @@
-def hard_task(action):
-    return action == "reply"
+def get_task():
+    return {
+        "id": "hard",
+        "input": "Respond quickly to an urgent email"
+    }
