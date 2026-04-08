@@ -15,3 +15,14 @@ def step(self, action_dict):
         "reward": reward,
         "done": done
     }
+def reset(self):
+    if not hasattr(self, "current_task"):
+        self.current_task = 1
+    else:
+        self.current_task += 1
+        if self.current_task > 3:
+            self.current_task = 1
+
+    return {
+        "message": f"Email task {self.current_task}"
+    }
